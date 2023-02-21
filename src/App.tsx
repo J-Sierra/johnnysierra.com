@@ -26,7 +26,15 @@ function App() {
             >
               About
             </div>
-            <div className="navLink">Experience</div>
+            <div
+              className="navLink"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.replace("/#experience");
+              }}
+            >
+              Experience
+            </div>
             <div className="navLink">Work</div>
             <div id="resumeButton">Resume</div>
           </div>
@@ -76,13 +84,36 @@ function App() {
               </div>
 
               <p>
-                Hello! My name is Johnny and make stuff that lives on the
-                internet. My interest in web design started back in
+                Hello! My name is Johnny and I make stuff that lives on the
+                internet. <br /> My interest in web design started back in 2011
+                when I started my college career. I have always been fascinated
+                by technology since my childhood, tinkering with everything I
+                could get my hands on. I would take apart TV's, VCR's, vacuums,
+                toys, just to see how they worked and for the challenge of been
+                able to put them back together.
               </p>
             </div>
           </section>
           <section id="experience">
-            <div className="inner">test3</div>
+            <div className="inner">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <h1 style={{ fontSize: "40px" }}>Work Experience</h1>
+                <div
+                  style={{
+                    height: "1px",
+                    width: "75%",
+                    background: "#ffd500",
+                  }}
+                />
+              </div>
+              <div></div>
+            </div>
           </section>
         </main>
       </div>
