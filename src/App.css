@@ -36,8 +36,13 @@
   align-items: center;
   column-gap: 50px;
 }
-.logo {
-  font-size: x-large;
+#logo {
+  color: #ffd500;
+  font-size: 55px;
+}
+#logo strong:hover {
+  color: white;
+  cursor: pointer;
 }
 .socials,
 .emailTo {
@@ -80,6 +85,70 @@ section {
   padding: 0;
   color: white;
 }
-.hero{
-  padding-top: 50px
+.hero {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner {
+  text-align: left;
+  width: 75%;
+  line-height: 1;
+}
+.hero h1 {
+  color: #ffd500;
+}
+.hero h2 {
+  font-size: 75px;
+  font-weight: bolder;
+}
+.hero h3 {
+  font-size: 75px;
+  font-weight: bolder;
+  color: rgba(211, 211, 211, 0.51);
+}
+#hero-inner h1,
+h2 {
+  margin-bottom: -40px;
+}
+.navLink {
+  cursor: pointer;
+}
+.navLink:hover {
+  color: #ffd500;
+}
+#resumeButton {
+  border: 2px solid #ffd500;
+  border-radius: 10px;
+  padding: 5px;
+  color: #ffd500;
+  cursor: pointer;
+}
+#resumeButton:hover {
+  color: white;
+  border-color: white;
+}
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#about-inner {
+  text-align: left;
+  width: 75%;
+  line-height: 1;
+}
+
+
+#background-1 {
+  position: absolute;
+  z-index: 0;
+  border-radius: 78% 22% 65% 38% / 23% 26% 74% 77%;
+  background-color: #ffd500;
+  width: 400px;
+  height: 400px;
+  left: 399px;
+  top: -178px;
+  box-shadow: 13px 2px 5px 2px black;
 }
