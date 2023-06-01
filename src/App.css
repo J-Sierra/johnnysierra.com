@@ -152,3 +152,8 @@ h2 {
   top: -178px;
   box-shadow: 13px 2px 5px 2px black;
 }
+
+#experience-section .inner {
+  border: 2px solid #ffd500 ;
+
+}
