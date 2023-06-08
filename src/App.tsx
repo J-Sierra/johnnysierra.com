@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { AiOutlineLinkedin } from "react-icons/all";
+import JobCardTitle from "./jobCardTitle";
+import JobCard from "./jobCard";
 function App() {
+  const [selectedJobCard, setSelectedJobCard] = useState(0);
+
+  const handleJobCardTitleClick = (index: React.SetStateAction<number>) => {
+    setSelectedJobCard(index);
+  };
   return (
     <div className="App">
       <header className="Header">
@@ -96,8 +103,10 @@ function App() {
               </p>
             </div>
           </section>
+
           <section id="experience-section">
             <div className="inner">
+              {/* Title with yellow line **START** */}
               <div
                 style={{
                   display: "flex",
@@ -114,107 +123,103 @@ function App() {
                   }}
                 />
               </div>
+              {/* Title with yellow line **END** */}
               <div
-                className={"work-experience-block"}
                 style={{
+                  border: "2px solid red",
                   display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
+                  flexDirection: "row",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "-35px",
-                  }}
-                >
-                  <h1>NURO Inc.</h1>
-                  <p>Oct 2019 - May 2023</p>
-                </div>
-                <h4 style={{ color: "#D3D3D382" }}>
-                  Robotic Specialist/Software Development
-                </h4>
                 <div>
-                  <p>
-                    Nuro is an up and coming Robotics Delivery Startup aiming to
-                    bring self-driving Robots to domestic deliveries.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Developed -</strong> Worked as part of a team to
-                      implement in-house web tools dedicated to improving
-                      productivity.
-                    </li>
-                    <li>
-                      <strong>Maintained -</strong> Tested and implemented
-                      changes to the autonomous robot platform software.
-                    </li>
-                    <li>
-                      <strong>Documented -</strong> Reported and documented any
-                      edge cases in the software to ensure robustness.
-                    </li>
-                    <li>
-                      <strong>Upkeep -</strong> Maintained the highest level of
-                      safety for the operation of the autonomous robot platform.
-                    </li>
-                    <li>
-                      <strong>Communication -</strong> Ensured efficient and
-                      concise communication among 4 cities of operations.
-                    </li>
-                  </ul>
+                  <JobCardTitle
+                    CompanyName={"NURO Inc."}
+                    JobDates={"Oct 2019 - May 2023"}
+                    onClick={() => handleJobCardTitleClick(0)}
+                    active={selectedJobCard === 0}
+                  />
+                  <JobCardTitle
+                    CompanyName={"R Kirk Enterprises"}
+                    JobDates={"August 2017 - August 2019"}
+                    onClick={() => handleJobCardTitleClick(1)}
+                    active={selectedJobCard === 1}
+                  />
                 </div>
-              </div>
-
-              <div
-                className={"work-experience-block"}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "-35px",
-                  }}
-                >
-                  <h1>R Kirk Enterprises</h1>
-                  <p>August 2017 - August 2019</p>
-                </div>
-                <h4 style={{ color: "#D3D3D382" }}>Software Developer</h4>
                 <div>
-                  <p>
-                    Nuro is an up and coming Robotics Delivery Startup aiming to
-                    bring self-driving Robots to domestic deliveries.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Developed -</strong> Worked as part of a team to
-                      implement in-house web tools dedicated to improving
-                      productivity.
-                    </li>
-                    <li>
-                      <strong>Maintained -</strong> Tested and implemented
-                      changes to the autonomous robot platform software.
-                    </li>
-                    <li>
-                      <strong>Documented -</strong> Reported and documented any
-                      edge cases in the software to ensure robustness.
-                    </li>
-                    <li>
-                      <strong>Upkeep -</strong> Maintained the highest level of
-                      safety for the operation of the autonomous robot platform.
-                    </li>
-                    <li>
-                      <strong>Communication -</strong> Ensured efficient and
-                      concise communication among 4 cities of operations.
-                    </li>
-                  </ul>
+                  {selectedJobCard === 0 && (
+                    <JobCard
+                      companyName={"NURO Inc."}
+                      dates={"Oct 2019 - May 2023"}
+                      jobTitle={" Robotic Specialist/Software Development"}
+                    >
+                      <p>
+                        Nuro is an up and coming Robotics Delivery Startup
+                        aiming to bring self-driving Robots to domestic
+                        deliveries.
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>Developed -</strong> Worked as part of a team
+                          to implement in-house web tools dedicated to improving
+                          productivity.
+                        </li>
+                        <li>
+                          <strong>Maintained -</strong> Tested and implemented
+                          changes to the autonomous robot platform software.
+                        </li>
+                        <li>
+                          <strong>Documented -</strong> Reported and documented
+                          any edge cases in the software to ensure robustness.
+                        </li>
+                        <li>
+                          <strong>Upkeep -</strong> Maintained the highest level
+                          of safety for the operation of the autonomous robot
+                          platform.
+                        </li>
+                        <li>
+                          <strong>Communication -</strong> Ensured efficient and
+                          concise communication among 4 cities of operations.
+                        </li>
+                      </ul>
+                    </JobCard>
+                  )}
+                  {selectedJobCard === 1 && (
+                    <JobCard
+                      companyName={"R Kirk Enterprises"}
+                      dates={"August 2017 - August 2019"}
+                      jobTitle={"Software Developer"}
+                    >
+                      <p>
+                        Nuro is an up and coming Robotics Delivery Startup
+                        aiming to bring self-driving Robots to domestic
+                        deliveries.
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>Developed -</strong> Worked as part of a team
+                          to implement in-house web tools dedicated to improving
+                          productivity.
+                        </li>
+                        <li>
+                          <strong>Maintained -</strong> Tested and implemented
+                          changes to the autonomous robot platform software.
+                        </li>
+                        <li>
+                          <strong>Documented -</strong> Reported and documented
+                          any edge cases in the software to ensure robustness.
+                        </li>
+                        <li>
+                          <strong>Upkeep -</strong> Maintained the highest level
+                          of safety for the operation of the autonomous robot
+                          platform.
+                        </li>
+                        <li>
+                          <strong>Communication -</strong> Ensured efficient and
+                          concise communication among 4 cities of operations.
+                        </li>
+                      </ul>
+                    </JobCard>
+                  )}
                 </div>
               </div>
             </div>
