@@ -1,14 +1,50 @@
 import React, { useState } from "react";
 import "./App.css";
-import { AiOutlineLinkedin } from "react-icons/all";
+import {
+  AiOutlineLinkedin,
+  BiCopy,
+  FaDownload,
+  AiOutlineLink,
+} from "react-icons/all";
 import JobCardTitle from "./jobCardTitle";
 import JobCard from "./jobCard";
+import Sudoku_Screenshot from "./Screenshot 2023-08-01 233726.png";
 function App() {
+  const [resumeHover, setResumeHover] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
   const [selectedJobCard, setSelectedJobCard] = useState(0);
-
+  const resumePDFURL = "/Johnny Sierra - Resume.pdf";
+  const emailAddress = "Johnny.Sierra.Dev@gmail.com";
   const handleJobCardTitleClick = (index: React.SetStateAction<number>) => {
     setSelectedJobCard(index);
   };
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = resumePDFURL;
+    link.download = "Johnny_Sierra_Resume.pdf"; // Provide the desired filename for the downloaded PDF
+    link.click();
+    setDownloaded(true); // Update the state to indicate that the resume has been downloaded
+  };
+
+  const handleEmailCopy = () => {
+    navigator.clipboard
+      .writeText(emailAddress)
+      .then(() => {
+        setShowTooltip(true);
+      })
+      .catch((error) => {
+        console.error("Failed to copy email address:", error);
+      });
+    setShowCopied(true);
+
+    // After 1.5 seconds, reset the showCopied state to hide the message
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 1000);
+  };
+
   return (
     <div className="App">
       <header className="Header">
@@ -37,22 +73,65 @@ function App() {
               className="navLink"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.replace("/#experience");
+                window.location.replace("/#experience-section");
               }}
             >
               Experience
             </div>
-            <div className="navLink">Work</div>
-            <div id="resumeButton">Resume</div>
+            <div
+              className="navLink"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.replace("/#projects");
+              }}
+            >
+              Projects
+            </div>
+            <div
+              onMouseEnter={() => setResumeHover(true)}
+              onMouseLeave={() => {
+                setResumeHover(false);
+                setDownloaded(false);
+              }}
+              id="resumeButton"
+              style={{ cursor: "pointer" }}
+              onClick={handleDownloadResume}
+            >
+              {resumeHover && !downloaded ? (
+                <FaDownload />
+              ) : downloaded ? (
+                "Downloaded"
+              ) : (
+                "Resume"
+              )}
+            </div>
           </div>
         </nav>
       </header>
       <div className="socials">
-        <AiOutlineLinkedin />
+        <a
+          href={"https://www.linkedin.com/in/johnny-sierra/"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiOutlineLinkedin />
+        </a>
         <div className="afterBar" />
       </div>
-      <div className="emailTo">
-        <div id="email">Johnny.Sierra.Dev@gmail.com</div>
+      <div
+        className="emailTo"
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+      >
+        <div id="email" style={{ cursor: "pointer" }} onClick={handleEmailCopy}>
+          {emailAddress}
+          {showTooltip && (
+            <div onClick={handleEmailCopy} className="tooltip">
+              <BiCopy />
+            </div>
+          )}
+          {showCopied && <div className="bubbleMessage">Copied!</div>}
+        </div>
         <div className="afterBar" />
       </div>
       <div id="content">
@@ -90,10 +169,17 @@ function App() {
                 />
               </div>
               <p>
-                Welcome to my personal website! I'm Johnny Sierra, a passionate
-                software developer with a drive for creating innovative and
-                efficient solutions. With 2 years of experience in the industry,
-                I specialize in front-end web development with a focus on React.
+                Hello! I'm a React JS Developer with a unique background in the
+                autonomous vehicle industry. Over three years, I've been deeply
+                involved in optimizing algorithms, decoding real-time data, and
+                thriving in collaborative environments.
+                <br />
+                <br /> My React JS journey has led me to craft some pretty cool
+                projects that showcase my creative thinking. Engaging with the
+                tech community through GitHub allows me to share my insights and
+                stay up-to-date. Bringing my knack for problem-solving and a
+                fresh outlook, I'm genuinely thrilled to merge my experiences
+                into the world of coding!
                 <br />
                 <br />I am highly skilled in React, React Native, JavaScript,
                 HTML, CSS, and Redux. I actively stay updated with the latest
@@ -103,7 +189,6 @@ function App() {
               </p>
             </div>
           </section>
-
           <section id="experience-section">
             <div className="inner">
               {/* Title with yellow line **START** */}
@@ -125,8 +210,13 @@ function App() {
               </div>
               {/* Title with yellow line **END** */}
               <div
+                id="#experience"
+                className="job-card-container"
                 style={{
-                  border: "2px solid red",
+                  border: "2px solid #3d3d3d",
+                  borderRadius: "1%",
+                  paddingRight: "7px",
+                  boxShadow: "black 0px 0px 20px 0px",
                   display: "flex",
                   flexDirection: "row",
                 }}
@@ -145,12 +235,22 @@ function App() {
                     active={selectedJobCard === 1}
                   />
                 </div>
-                <div>
+                <div
+                  style={{
+                    borderLeft: "2px solid #3d3d3d",
+                    paddingLeft: "5px",
+                  }}
+                >
                   {selectedJobCard === 0 && (
                     <JobCard
                       companyName={"NURO Inc."}
                       dates={"Oct 2019 - May 2023"}
-                      jobTitle={" Robotic Specialist/Software Development"}
+                      jobTitle={"Robitics Operator | Houston, Tx"}
+                      className={
+                        selectedJobCard === 0
+                          ? "work-experience-block fade-in"
+                          : "work-experience-block"
+                      }
                     >
                       <p>
                         Nuro is an up and coming Robotics Delivery Startup
@@ -159,26 +259,50 @@ function App() {
                       </p>
                       <ul>
                         <li>
-                          <strong>Developed -</strong> Worked as part of a team
-                          to implement in-house web tools dedicated to improving
-                          productivity.
+                          <strong>Operated</strong> and navigated autonomous
+                          vehicle systems, maintaining a high degree of
+                          attention to detail and situational awareness.
+                          -Analyzed real-time data streams from sensors and
+                          cameras to ensure accurate vehicle operations and
+                          decision-making.
                         </li>
                         <li>
-                          <strong>Maintained -</strong> Tested and implemented
-                          changes to the autonomous robot platform software.
+                          <strong>Collaborated</strong> closely with
+                          cross-functional teams of engineers, designers, and
+                          researchers to troubleshoot and optimize vehicle
+                          performance.
                         </li>
                         <li>
-                          <strong>Documented -</strong> Reported and documented
-                          any edge cases in the software to ensure robustness.
+                          <strong>Developed</strong> and executed testing
+                          procedures, iterating on software and hardware
+                          configurations to improve autonomous driving
+                          capabilities.
                         </li>
                         <li>
-                          <strong>Upkeep -</strong> Maintained the highest level
-                          of safety for the operation of the autonomous robot
-                          platform.
+                          <strong>Applied</strong> problem-solving skills to
+                          address unexpected scenarios, contributing to the
+                          refinement of algorithms and control systems.
                         </li>
                         <li>
-                          <strong>Communication -</strong> Ensured efficient and
-                          concise communication among 4 cities of operations.
+                          <strong>Adapted</strong> quickly to dynamic
+                          environments, learning new technologies and protocols
+                          to ensure safe and efficient vehicle operations.
+                        </li>
+                        <li>
+                          <strong>Delivered</strong> captivating and informative
+                          demos to investors, effectively conveying complex
+                          technical concepts and the potential of autonomous
+                          technology.
+                        </li>
+                        <li>
+                          <strong>Provided</strong> valuable feedback on system
+                          performance and usability, contributing to iterative
+                          improvements.
+                        </li>
+                        <li>
+                          <strong>Conducted</strong> thorough quality assurance
+                          checks, ensuring the reliability and safety of
+                          autonomous systems.
                         </li>
                       </ul>
                     </JobCard>
@@ -187,35 +311,55 @@ function App() {
                     <JobCard
                       companyName={"R Kirk Enterprises"}
                       dates={"August 2017 - August 2019"}
-                      jobTitle={"Software Developer"}
+                      jobTitle={"Software Developer | Houston, Tx"}
                     >
                       <p>
-                        Nuro is an up and coming Robotics Delivery Startup
-                        aiming to bring self-driving Robots to domestic
-                        deliveries.
+                        R Kirk Enterprises was a local fleet service company
+                        that serviced the greater houston area.
                       </p>
                       <ul>
                         <li>
-                          <strong>Developed -</strong> Worked as part of a team
-                          to implement in-house web tools dedicated to improving
-                          productivity.
+                          <strong>Spearheaded</strong> the creation,
+                          development, and successful deployment of a
+                          cutting-edge Fleet Management web application.
                         </li>
                         <li>
-                          <strong>Maintained -</strong> Tested and implemented
-                          changes to the autonomous robot platform software.
+                          <strong>Designed</strong> and implemented real-time
+                          GPS tracking functionality through a paired mobile
+                          application, enabling dynamic task assignment and
+                          employee tracking in the field.
                         </li>
                         <li>
-                          <strong>Documented -</strong> Reported and documented
-                          any edge cases in the software to ensure robustness.
+                          <strong>Led</strong> a distributed team of developers
+                          across three cities, fostering seamless collaboration
+                          and efficient project development.
                         </li>
                         <li>
-                          <strong>Upkeep -</strong> Maintained the highest level
-                          of safety for the operation of the autonomous robot
-                          platform.
+                          <strong>Developed</strong> a proprietary
+                          fleet/employee management web program from the ground
+                          up, ensuring a user-friendly interface and optimal
+                          performance.
                         </li>
                         <li>
-                          <strong>Communication -</strong> Ensured efficient and
-                          concise communication among 4 cities of operations.
+                          <strong>Demonstrated</strong> exceptional autonomy,
+                          maintaining effective communication while working
+                          remotely to ensure project milestones were met.
+                        </li>
+                        <li>
+                          <strong>Engineered</strong> the application with
+                          scalability in mind, ensuring seamless expansion to
+                          accommodate teams of varying sizes.
+                        </li>
+                        <li>
+                          <strong>Employed</strong> Firebase for deployment,
+                          enabling the management team to access and utilize the
+                          application effectively.
+                        </li>
+                        <li>
+                          <strong>Collaborated</strong> with stakeholders to
+                          gather requirements, refine features, and provide
+                          technical insights, ensuring the application aligned
+                          with business needs.
                         </li>
                       </ul>
                     </JobCard>
@@ -224,6 +368,108 @@ function App() {
               </div>
             </div>
           </section>
+          <section id="projects">
+            {/* Title with yellow line **START** */}{" "}
+            <div className="inner">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <h1 style={{ fontSize: "40px" }}>Projects</h1>
+                <div
+                  style={{
+                    height: "1px",
+                    width: "75%",
+                    background: "#ffd500",
+                  }}
+                />
+              </div>
+              {/* Title with yellow line **END** */}
+
+              <div id="project-cards">
+                <div className="container">
+                  <div className="card">
+                    <div
+                      style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        window.open(
+                          "https://j-sierra.github.io/React_Sudoku_Puzzle/",
+                          "_blank"
+                        )
+                      }
+                      className="image"
+                    >
+                      <img src={Sudoku_Screenshot} alt="Placeholder" />
+                      <div className="overlay"></div>{" "}
+                      {/* This will be the overlay */}
+                      <div className="link-icon">
+                        <a
+                          href="https://j-sierra.github.io/React_Sudoku_Puzzle/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <AiOutlineLink />
+                        </a>
+                      </div>
+                    </div>
+                    <div className="content">
+                      <h3>
+                        Demo:{" "}
+                        <span
+                          id="sudokuLink"
+                          onClick={() =>
+                            window.open(
+                              "https://j-sierra.github.io/React_Sudoku_Puzzle/",
+                              "_blank"
+                            )
+                          }
+                        >
+                          Sudoku Puzzle
+                        </span>
+                      </h3>
+                      <p>
+                        I made a Sudoku puzzle using React as a way to better
+                        learn React Redux.
+                        <br />
+                        <br />
+                        Source code:{" "}
+                        <a
+                          href="https://github.com/J-Sierra/React_Sudoku_Puzzle"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          id="sudoku-link"
+                        >
+                          GitHub Repository
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <footer
+            style={{
+              fontSize: "10px",
+              textAlign: "right",
+              marginRight: "40px",
+              marginBottom: "10px",
+              color: "white",
+            }}
+          >
+            Created by Johnny Sierra &nbsp;|&nbsp; Source:{" "}
+            <a
+              href="https://github.com/J-Sierra/johnnysierra.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="footer-link"
+            >
+              GitHub
+            </a>
+          </footer>
         </main>
       </div>
     </div>

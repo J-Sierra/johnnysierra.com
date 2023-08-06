@@ -53,21 +53,42 @@
   justify-content: space-between;
   gap: 20px;
   color: white;
+  font-size: 25px;
 }
 .socials {
   left: 20px;
   flex-direction: column;
 }
+.socials a {
+  color: white;
+}
+.socials a:hover {
+  color: #ffd500;
+}
 .emailTo {
   right: 20px;
   writing-mode: vertical-rl;
-  font-size: x-small;
+font-size: 13px;
   margin-right: 4px;
   margin-left: 4px;
 }
+#email:hover {
+  color: #ffd500;
+}
+.emailTo .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffd500;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 9999;
+}
 .afterBar {
   height: 25vh;
-  width: 1px;
+  width: 2px;
   background-color: white;
 }
 main {
@@ -81,12 +102,12 @@ section {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 0;
   color: white;
 }
 .hero {
-  padding-top: 50px;
+  padding-top: 155px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,10 +145,44 @@ h2 {
   padding: 5px;
   color: #ffd500;
   cursor: pointer;
+  min-width: 53px;
 }
 #resumeButton:hover {
   color: white;
   border-color: white;
+}
+.resumeTooltip {
+  position: absolute;
+  top: 17px; /* Adjust this value to position the tooltip above the button */
+  right: -50px; /* Center the tooltip horizontally */
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+  background: #ffd500;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+.bubbleMessage {
+  position: absolute;
+
+  top: -70px;
+  right: -15px;
+  transform: rotate(-90deg); /* Rotate the message 90 degrees counterclockwise */
+  transform-origin: left center; /* Set the transform origin to the left side of the message */
+  background: #ffd500;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 #about {
   display: flex;
@@ -153,6 +208,142 @@ h2 {
   box-shadow: 13px 2px 5px 2px black;
 }
 
-#experience-section .inner {
+#project-cards {
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  background-color: #3d3d3d;
+  min-height : 800px;
+  border-radius: 2%;
+  box-shadow:  #000000 0 0 9px 6px inset;
+}
+.container {
+  position : relative;
+  width : 1100px;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  padding : 30px;
+}
 
+.container .card {
+  position: relative;
+  max-width : 300px;
+  height : 215px;
+  background-color : #fff;
+  margin : 30px 10px;
+  padding : 20px 15px;
+
+  display : flex;
+  flex-direction : column;
+  box-shadow : 0 5px 20px rgba(0,0,0,0.5);
+  transition : 0.3s ease-in-out;
+  border-radius : 15px;
+
+
+}
+.container .card:hover {
+  height : 320px;
+}
+
+
+.container .card .image {
+  position : relative;
+  width : 260px;
+  height : 260px;
+
+  top : -40%;
+  left: 8px;
+  box-shadow : 0 5px 20px rgba(0,0,0,0.2);
+  z-index : 1;
+}
+
+.container .card .image img {
+  max-width : 100%;
+  border-radius : 15px;
+}
+
+.container .card .content {
+  position : relative;
+  top : -140px;
+  padding : 10px 15px;
+  color : #111;
+  text-align : center;
+
+  visibility : hidden;
+  opacity : 0;
+  transition : 0.3s ease-in-out;
+
+}
+
+.container .card:hover .content {
+  margin-top : 30px;
+  visibility : visible;
+  opacity : 1;
+  transition-delay: 0.2s;
+
+}
+#sudokuLink:hover {
+  color: #ffd500;
+  cursor: pointer;
+}
+.overlay {
+  /* The overlay style when the card is hovered */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control the blur effect */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius : 15px;
+}
+
+.image:hover .overlay {
+  /* Show the overlay when the card is hovered */
+  opacity: 1;
+}
+
+.link-icon {
+  /* The link icon style in the middle of the card */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; /* Adjust the font size of your link icon */
+  color: white; /* Adjust the color of your link icon */
+  opacity: 0; /* Hide the link icon by default */
+  pointer-events: none; /* Avoid capturing mouse events on the link icon */
+}
+.link-icon a{
+  color: white;
+}
+
+.image:hover .link-icon {
+  /* Show the link icon when the card is hovered */
+  opacity: 1;
+}
+
+#footer-link:link,
+#sudoku-link:link,
+#footer-link:visited
+{
+  color: #ffffff; /* Set the desired color for your links */
+  text-decoration: none; /* Remove underline for both normal and visited links */
+}
+
+#sudoku-link:visited{
+  color: black;
+}
+#footer-link:hover,
+#sudoku-link:hover{
+  text-decoration: underline; /* Add underline on hover (optional, can be removed) */
+}
+
+#footer-link:active {
+  color: #ffd500; /* Set the color for active links (optional) */
 }
