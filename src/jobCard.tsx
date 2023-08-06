@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import "./jobCard.css";
 
 interface JobCardProps {
@@ -6,6 +6,7 @@ interface JobCardProps {
   companyName: string;
   dates: string;
   jobTitle: string;
+  className?: string;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
@@ -14,16 +15,16 @@ const JobCard: React.FC<JobCardProps> = ({
   dates,
   jobTitle,
 }) => {
+  const jobCardRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // When the component mounts, add the "fade-in" class to the JobCard
+    if (jobCardRef.current) {
+      jobCardRef.current.classList.add("fade-in");
+    }
+  }, []);
+
   return (
-    <div
-      className={`work-experience-block `}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        padding: "5px",
-      }}
-    >
+    <div className="work-experience-block" ref={jobCardRef}>
       <div
         style={{
           display: "flex",
@@ -33,7 +34,7 @@ const JobCard: React.FC<JobCardProps> = ({
         }}
       >
         <h1>{companyName}</h1>
-        <p>{dates}</p>
+        <p style={{ color: "#ffd500" }}>{dates}</p>
       </div>
       <h4 style={{ color: "#D3D3D382" }}>{jobTitle}</h4>
       <div>{children}</div>
