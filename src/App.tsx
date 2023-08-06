@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import {
-  AiOutlineLinkedin,
-  BiCopy,
-  FaDownload,
-  AiOutlineLink,
-} from "react-icons/all";
+import { AiOutlineLinkedin } from "react-icons/ai";
+import { BiCopy } from "react-icons/bi";
+import { FaDownload } from "react-icons/fa";
+import { AiOutlineLink } from "react-icons/ai";
 import JobCardTitle from "./jobCardTitle";
 import JobCard from "./jobCard";
 import Sudoku_Screenshot from "./Screenshot 2023-08-01 233726.png";
