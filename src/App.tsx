@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
@@ -7,14 +7,28 @@ import { AiOutlineLink } from "react-icons/ai";
 import JobCardTitle from "./jobCardTitle";
 import JobCard from "./jobCard";
 import Sudoku_Screenshot from "./Screenshot 2023-08-01 233726.png";
+
 function App() {
+  const [scrolling, setScrolling] = useState(false);
   const [resumeHover, setResumeHover] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
   const [selectedJobCard, setSelectedJobCard] = useState(0);
+  const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
   const resumePDFURL = "/Johnny Sierra - Resume.pdf";
   const emailAddress = "Johnny.Sierra.Dev@gmail.com";
+  const [activeSection, setActiveSection] = useState(0);
+
+  const handleScroll = () => {
+    console.log("Scrolling:", scrolling);
+    if (window.scrollY > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
   const handleJobCardTitleClick = (index: React.SetStateAction<number>) => {
     setSelectedJobCard(index);
   };
@@ -58,11 +72,12 @@ function App() {
             </strong>
           </div>
           <div className="navElements">
+            <div>{activeSection}</div>
             <div
               className="navLink"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.replace("/#about");
+                window.location.replace("/#about-section");
               }}
             >
               About
@@ -80,7 +95,7 @@ function App() {
               className="navLink"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.replace("/#projects");
+                window.location.replace("/#projects-section");
               }}
             >
               Projects
@@ -104,6 +119,40 @@ function App() {
               )}
             </div>
           </div>
+          <div id="burger-menu">
+            <div
+              id="bars"
+              onClick={() => setBurgerMenuToggle(!burgerMenuToggle)}
+              className={burgerMenuToggle ? "change" : ""}
+            >
+              <div id="bar1" className="bar"></div>
+              <div id="bar2" className="bar"></div>
+              <div id="bar3" className="bar"></div>
+            </div>
+            <nav
+              id="burger-nav"
+              className={burgerMenuToggle ? "burger-nav change" : "burger-nav"}
+            >
+              <ul>
+                <li>
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a href="/#about">About</a>
+                </li>
+                <li>
+                  <a href="/#experience-section"> Experience</a>
+                </li>
+                <li>
+                  <a href="/#projects-section">Projects</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div
+            id="menu-bg"
+            className={burgerMenuToggle ? "menu-bg change-bg" : "menu-bg"}
+          ></div>
         </nav>
       </header>
       <div className="socials">
@@ -133,8 +182,11 @@ function App() {
         <div className="afterBar" />
       </div>
       <div id="content">
-        <main className="pages">
-          <section className="hero">
+        <main
+          onScroll={() => handleScroll()}
+          className={`scroll-container pages ${scrolling ? "scrolling" : ""}`}
+        >
+          <section className="scroll-section" id="hero">
             <div className="inner" style={{ position: "relative" }}>
               <div id="background-1" />
               <div style={{ zIndex: "100", position: "relative" }}>
@@ -148,7 +200,7 @@ function App() {
               </div>
             </div>
           </section>
-          <section id="about">
+          <section className="scroll-section" id="about-section">
             <div className="inner">
               <div
                 style={{
@@ -187,7 +239,7 @@ function App() {
               </p>
             </div>
           </section>
-          <section id="experience-section">
+          <section className="scroll-section" id="experience-section">
             <div className="inner">
               {/* Title with yellow line **START** */}
               <div
@@ -366,7 +418,7 @@ function App() {
               </div>
             </div>
           </section>
-          <section id="projects">
+          <section className="scroll-section" id="projects-section">
             {/* Title with yellow line **START** */}{" "}
             <div className="inner">
               <div
@@ -447,27 +499,27 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-          <footer
-            style={{
-              fontSize: "10px",
-              textAlign: "right",
-              marginRight: "40px",
-              marginBottom: "10px",
-              color: "white",
-            }}
-          >
-            Created by Johnny Sierra &nbsp;|&nbsp; Source:{" "}
-            <a
-              href="https://github.com/J-Sierra/johnnysierra.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              id="footer-link"
+            </div>{" "}
+            <footer
+              style={{
+                fontSize: "10px",
+                textAlign: "right",
+                marginRight: "40px",
+                marginBottom: "10px",
+                color: "white",
+              }}
             >
-              GitHub
-            </a>
-          </footer>
+              Created by Johnny Sierra &nbsp;|&nbsp; Source:{" "}
+              <a
+                href="https://github.com/J-Sierra/johnnysierra.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="footer-link"
+              >
+                GitHub
+              </a>
+            </footer>
+          </section>
         </main>
       </div>
     </div>
