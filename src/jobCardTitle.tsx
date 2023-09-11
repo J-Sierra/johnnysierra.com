@@ -14,7 +14,6 @@ const JobCardTitle: React.FC<JobCardTitleProps> = ({
   onClick,
   active,
 }) => {
-  console.log(active);
   return (
     <div onClick={onClick} className={`jobCardTitle ${active ? "active" : ""}`}>
       <h1 style={{ marginBottom: "-5px" }}>{CompanyName}</h1>
