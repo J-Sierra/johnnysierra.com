@@ -9,7 +9,6 @@ import JobCard from "./jobCard";
 import Sudoku_Screenshot from "./Screenshot 2023-08-01 233726.png";
 
 function App() {
-  const [scrolling, setScrolling] = useState(false);
   const [resumeHover, setResumeHover] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -18,16 +17,6 @@ function App() {
   const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
   const resumePDFURL = "/Johnny Sierra - Resume.pdf";
   const emailAddress = "Johnny.Sierra.Dev@gmail.com";
-  const [activeSection, setActiveSection] = useState(0);
-
-  const handleScroll = () => {
-    console.log("Scrolling:", scrolling);
-    if (window.scrollY > 0) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
-  };
 
   const handleJobCardTitleClick = (index: React.SetStateAction<number>) => {
     setSelectedJobCard(index);
@@ -65,14 +54,13 @@ function App() {
             <strong
               onClick={(e) => {
                 e.preventDefault();
-                window.location.replace("/#");
+                window.location.replace("/#home");
               }}
             >
               JS
             </strong>
           </div>
           <div className="navElements">
-            <div>{activeSection}</div>
             <div
               className="navLink"
               onClick={(e) => {
@@ -122,7 +110,10 @@ function App() {
           <div id="burger-menu">
             <div
               id="bars"
-              onClick={() => setBurgerMenuToggle(!burgerMenuToggle)}
+              onClick={() => {
+                setBurgerMenuToggle(!burgerMenuToggle);
+                setDownloaded(false);
+              }}
               className={burgerMenuToggle ? "change" : ""}
             >
               <div id="bar1" className="bar"></div>
@@ -135,16 +126,29 @@ function App() {
             >
               <ul>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/#home">Home</a>
                 </li>
                 <li>
-                  <a href="/#about">About</a>
+                  <a href="/#about-section">About</a>
                 </li>
                 <li>
                   <a href="/#experience-section"> Experience</a>
                 </li>
                 <li>
                   <a href="/#projects-section">Projects</a>
+                </li>
+                <li>
+                  <div onClick={handleDownloadResume}>
+                    {!downloaded ? (
+                      <>
+                        Resume <FaDownload />
+                      </>
+                    ) : downloaded ? (
+                      "Downloaded"
+                    ) : (
+                      "Resume"
+                    )}
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -182,12 +186,9 @@ function App() {
         <div className="afterBar" />
       </div>
       <div id="content">
-        <main
-          onScroll={() => handleScroll()}
-          className={`scroll-container pages ${scrolling ? "scrolling" : ""}`}
-        >
+        <main className={`scroll-container pages`}>
           <section className="scroll-section" id="hero">
-            <div className="inner" style={{ position: "relative" }}>
+            <div className="inner" id="home" style={{ position: "relative" }}>
               <div id="background-1" />
               <div style={{ zIndex: "100", position: "relative" }}>
                 <h1>Hi, my name is</h1>
@@ -202,21 +203,9 @@ function App() {
           </section>
           <section className="scroll-section" id="about-section">
             <div className="inner">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <h1 style={{ fontSize: "40px" }}>About Me</h1>
-                <div
-                  style={{
-                    height: "1px",
-                    width: "75%",
-                    background: "#ffd500",
-                  }}
-                />
+              <div className="section-title">
+                <h1>About Me</h1>
+                <div />
               </div>
               <p>
                 Hello! I'm a React JS Developer with a unique background in the
@@ -241,37 +230,13 @@ function App() {
           </section>
           <section className="scroll-section" id="experience-section">
             <div className="inner">
-              {/* Title with yellow line **START** */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <h1 style={{ fontSize: "40px" }}>Work Experience</h1>
-                <div
-                  style={{
-                    height: "1px",
-                    width: "75%",
-                    background: "#ffd500",
-                  }}
-                />
+              <div className="section-title">
+                <h1>Work Experience</h1>
+                <div />
               </div>
-              {/* Title with yellow line **END** */}
-              <div
-                id="#experience"
-                className="job-card-container"
-                style={{
-                  border: "2px solid #3d3d3d",
-                  borderRadius: "1%",
-                  paddingRight: "7px",
-                  boxShadow: "black 0px 0px 20px 0px",
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                <div>
+
+              <div id="#experience" className="job-card-container">
+                <div className="job-card-title-container">
                   <JobCardTitle
                     CompanyName={"NURO Inc."}
                     JobDates={"Oct 2019 - May 2023"}
@@ -316,39 +281,46 @@ function App() {
                           cameras to ensure accurate vehicle operations and
                           decision-making.
                         </li>
+                        <br />
                         <li>
                           <strong>Collaborated</strong> closely with
                           cross-functional teams of engineers, designers, and
                           researchers to troubleshoot and optimize vehicle
                           performance.
                         </li>
+                        <br />
                         <li>
                           <strong>Developed</strong> and executed testing
                           procedures, iterating on software and hardware
                           configurations to improve autonomous driving
                           capabilities.
                         </li>
+                        <br />
                         <li>
                           <strong>Applied</strong> problem-solving skills to
                           address unexpected scenarios, contributing to the
                           refinement of algorithms and control systems.
                         </li>
+                        <br />
                         <li>
                           <strong>Adapted</strong> quickly to dynamic
                           environments, learning new technologies and protocols
                           to ensure safe and efficient vehicle operations.
                         </li>
+                        <br />
                         <li>
                           <strong>Delivered</strong> captivating and informative
                           demos to investors, effectively conveying complex
                           technical concepts and the potential of autonomous
                           technology.
                         </li>
+                        <br />
                         <li>
                           <strong>Provided</strong> valuable feedback on system
                           performance and usability, contributing to iterative
                           improvements.
                         </li>
+                        <br />
                         <li>
                           <strong>Conducted</strong> thorough quality assurance
                           checks, ensuring the reliability and safety of
@@ -379,32 +351,38 @@ function App() {
                           application, enabling dynamic task assignment and
                           employee tracking in the field.
                         </li>
+                        <br />
                         <li>
                           <strong>Led</strong> a distributed team of developers
                           across three cities, fostering seamless collaboration
                           and efficient project development.
                         </li>
+                        <br />
                         <li>
                           <strong>Developed</strong> a proprietary
                           fleet/employee management web program from the ground
                           up, ensuring a user-friendly interface and optimal
                           performance.
                         </li>
+                        <br />
                         <li>
                           <strong>Demonstrated</strong> exceptional autonomy,
                           maintaining effective communication while working
                           remotely to ensure project milestones were met.
                         </li>
+                        <br />
                         <li>
                           <strong>Engineered</strong> the application with
                           scalability in mind, ensuring seamless expansion to
                           accommodate teams of varying sizes.
                         </li>
+                        <br />
                         <li>
                           <strong>Employed</strong> Firebase for deployment,
                           enabling the management team to access and utilize the
                           application effectively.
                         </li>
+                        <br />
                         <li>
                           <strong>Collaborated</strong> with stakeholders to
                           gather requirements, refine features, and provide
@@ -421,21 +399,9 @@ function App() {
           <section className="scroll-section" id="projects-section">
             {/* Title with yellow line **START** */}{" "}
             <div className="inner">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <h1 style={{ fontSize: "40px" }}>Projects</h1>
-                <div
-                  style={{
-                    height: "1px",
-                    width: "75%",
-                    background: "#ffd500",
-                  }}
-                />
+              <div className="section-title">
+                <h1>Projects</h1>
+                <div />
               </div>
               {/* Title with yellow line **END** */}
 
@@ -499,7 +465,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <footer
               style={{
                 fontSize: "10px",
