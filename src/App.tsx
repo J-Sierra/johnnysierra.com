@@ -345,6 +345,7 @@ function App() {
                           development, and successful deployment of a
                           cutting-edge Fleet Management web application.
                         </li>
+                        <br />
                         <li>
                           <strong>Designed</strong> and implemented real-time
                           GPS tracking functionality through a paired mobile
