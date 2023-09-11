@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { AiOutlineLinkedin } from "react-icons/ai";
+import { AiOutlineLinkedin, AiFillGithub } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 import { FaDownload } from "react-icons/fa";
 import { AiOutlineLink } from "react-icons/ai";
@@ -167,8 +167,16 @@ function App() {
         >
           <AiOutlineLinkedin />
         </a>
+        <a
+          href={"https://github.com/J-Sierra/johnnysierra.com"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillGithub />
+        </a>
         <div className="afterBar" />
       </div>
+
       <div
         className="emailTo"
         onMouseEnter={() => setShowTooltip(true)}
