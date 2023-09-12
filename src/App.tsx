@@ -419,30 +419,36 @@ function App() {
                   <div className="card">
                     <div
                       style={{ cursor: "pointer" }}
-                      onClick={() =>
-                        window.open(
-                          "https://j-sierra.github.io/React_Sudoku_Puzzle/",
-                          "_blank"
-                        )
+                      onClick={
+                        window.innerWidth >= 920
+                          ? () => {
+                              window.open(
+                                "https://j-sierra.github.io/React_Sudoku_Puzzle/",
+                                "_blank"
+                              );
+                            }
+                          : undefined
                       }
                       className="image"
                     >
                       <img src={Sudoku_Screenshot} alt="Placeholder" />
                       <div className="overlay"></div>{" "}
                       {/* This will be the overlay */}
-                      <div className="link-icon">
-                        <a
-                          href="https://j-sierra.github.io/React_Sudoku_Puzzle/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <AiOutlineLink />
-                        </a>
-                      </div>
+                      {window.innerWidth >= 920 ? (
+                        <div className="link-icon">
+                          <a
+                            href="https://j-sierra.github.io/React_Sudoku_Puzzle/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <AiOutlineLink />
+                          </a>
+                        </div>
+                      ) : null}
                     </div>
                     <div className="content">
                       <h3>
-                        Demo:{" "}
+                        Demo:
                         <span
                           id="sudokuLink"
                           onClick={() =>

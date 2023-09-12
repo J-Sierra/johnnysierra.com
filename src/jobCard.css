@@ -30,3 +30,8 @@
 .work-experience-block.fade-in {
     opacity: 1; /* Gradually show the JobCard with fade-in effect */
 }
+@media screen and (max-width: 920px){
+    .work-experience-block{
+        padding-right: 16px;
+    }
+}
