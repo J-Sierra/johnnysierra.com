@@ -18,7 +18,7 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
+import threejs from "./tech/threejs.png";
 import firebase from "./tech/firebase.png";
 import java from "./tech/java.png";
 import expressJs from "./tech/express.png";
