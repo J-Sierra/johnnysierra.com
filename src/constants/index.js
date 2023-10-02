@@ -60,17 +60,17 @@ const technologies = [
   { name: "HTML 5", icon: html },
   { name: "CSS 3", icon: css },
   { name: "JavaScript", icon: javascript },
-  { name: "TypeScript", icon: typescript },
+  // { name: "TypeScript", icon: typescript },
   { name: "React JS", icon: reactjs },
   { name: "Redux Toolkit", icon: redux },
   { name: "Tailwind CSS", icon: tailwind },
   { name: "Node JS", icon: nodejs },
-  { name: "MongoDB", icon: mongodb },
+  //  { name: "MongoDB", icon: mongodb },
   { name: "Three JS", icon: threejs },
   { name: "git", icon: git },
-  { name: "Firebase", icon: firebase },
-  { name: "Java", icon: java },
-  // { name: "Express.js", icon: expressJs },
+  // { name: "Firebase", icon: firebase },
+  //{ name: "Java", icon: java },
+  //{ name: "Express.js", icon: expressJs },
 ];
 
 const experiences = [
