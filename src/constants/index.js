@@ -70,7 +70,7 @@ const technologies = [
   { name: "git", icon: git },
   { name: "Firebase", icon: firebase },
   { name: "Java", icon: java },
-  { name: "Express.js", icon: expressJs },
+  // { name: "Express.js", icon: expressJs },
 ];
 
 const experiences = [

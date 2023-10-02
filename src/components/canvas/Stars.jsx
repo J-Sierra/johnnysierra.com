@@ -9,7 +9,6 @@ function generateRandomSpherePoints(numPoints, radius) {
     const theta = Math.random() * 2 * Math.PI;
     const phi = Math.acos(2 * Math.random() - 1);
     const u = Math.random();
-    const v = Math.random();
     const r = radius * Math.cbrt(u);
 
     const x = r * Math.sin(phi) * Math.cos(theta);
