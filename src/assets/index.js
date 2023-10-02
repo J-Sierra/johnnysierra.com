@@ -8,8 +8,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 
 import css from "./tech/css.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
+
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
@@ -24,13 +23,6 @@ import firebase from "./tech/firebase.png";
 import java from "./tech/java.png";
 import expressJs from "./tech/express.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import tesla from "./company/tesla.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 import uhv from "./company/uhv.png";
 import RR from "./company/R&R.png";
 import nuro from "./company/nuro.png";
@@ -48,8 +40,6 @@ export {
   menu,
   close,
   css,
-  docker,
-  figma,
   git,
   html,
   javascript,
@@ -60,12 +50,6 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
   uhv,
   RR,
   nuro,
