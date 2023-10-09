@@ -1,0 +1,3 @@
+[submodule "sudoku"]
+	path = sudoku
+	url = https://github.com/J-Sierra/sudoku2.0.git
