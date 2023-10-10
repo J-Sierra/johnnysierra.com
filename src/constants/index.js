@@ -167,8 +167,8 @@ const projects = [
       },
     ],
     image: sudoku,
-    source_code_link: "https://github.com/J-Sierra/React_Sudoku_Puzzle",
-    demo_link: "https://j-sierra.github.io/React_Sudoku_Puzzle/",
+    source_code_link: "https://github.com/J-Sierra/Sudoku2.0",
+    demo_link: "https://sudoku.johnnysierra.com",
   },
   {
     name: "Media Finder",
