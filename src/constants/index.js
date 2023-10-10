@@ -158,7 +158,7 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "redux",
+        name: "framer",
         color: "green-text-gradient",
       },
       {
