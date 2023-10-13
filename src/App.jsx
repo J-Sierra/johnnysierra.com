@@ -5,26 +5,24 @@ import {
   Experience,
   Hero,
   Navbar,
+  StarsCanvas,
   Tech,
   Works,
-  StarsCanvas,
 } from "./components";
 
 const App = () => (
   <BrowserRouter>
-    <div className="relative z-0 bg-primary">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
-        <Hero />
+    <div className="relative">
+      <Navbar />
+      <Hero />
+      <div className="bg-semiTransperant ">
+        <About />
+        <Works />
+        <Experience />
+        <Tech />
       </div>
-      <About />
-      <Experience />
-      <Tech />
-      <Works />
-      <div className="relative z-0">
-        <Contact />
-        <StarsCanvas />
-      </div>
+      <Contact />
+      <StarsCanvas />
     </div>
   </BrowserRouter>
 );

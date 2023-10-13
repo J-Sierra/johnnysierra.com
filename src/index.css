@@ -202,3 +202,6 @@
     -2.6em 0 0 0 rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0 #ffffff;
   }
 }
+.bg-semiTransperant {
+  background-color: rgba(5, 8, 22, 0.75);
+}
