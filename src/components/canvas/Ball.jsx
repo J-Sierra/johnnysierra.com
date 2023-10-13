@@ -1,26 +1,26 @@
 /* eslint-disable */
 // noinspection HtmlUnknownBooleanAttribute
 
-import { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import {
-  Decal,
-  Float,
-  OrbitControls,
-  Preload,
-  useTexture,
-} from "@react-three/drei";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Decal, Float, Preload, useTexture } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
 const Ball = ({ imgUrl }) => {
   const [decal] = useTexture([imgUrl]);
+  const ballRef = useRef();
+
+  useFrame(() => {
+    // Rotate the ball in each frame
+    ballRef.current.rotation.y += 0.0005;
+  });
 
   return (
     <Float speed={3.75} rotationIntensity={4} floatIntensity={3}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
-      <mesh castShadow={true} receiveShadow={true} scale={2.75}>
+      <mesh castShadow={true} receiveShadow={true} scale={2.75} ref={ballRef}>
         <icosahedronGeometry args={[1, 20]} />
         <meshStandardMaterial
           color="#fff8eb"
@@ -74,6 +74,7 @@ const Ball = ({ imgUrl }) => {
     </Float>
   );
 };
+
 const BallCanvas = ({ icon }) => {
   return (
     <Canvas
@@ -82,7 +83,7 @@ const BallCanvas = ({ icon }) => {
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
+        {/* Remove OrbitControls */}
         <Ball imgUrl={icon} />
       </Suspense>
 
