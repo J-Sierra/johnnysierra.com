@@ -52,7 +52,7 @@ const services = [
   {
     title: "My Resume",
     icon: mobile,
-    link: "https://drive.google.com/file/d/1F3cE6J27PD5ZBQfXDjaeuy6hf3FhIISD/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1v7NrrWB6vb__BnDjUYVHqmFPQSVWbWTv/view?usp=sharing",
   },
 ];
 
@@ -102,7 +102,7 @@ const experiences = [
     ],
   },
   {
-    title: "Web Operations Specialist - Autonomous Vehicle Operator",
+    title: "Web Operations Specialist",
     company_name: "Nuro",
     icon: nuro,
     iconBg: "#383E56",
