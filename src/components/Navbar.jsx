@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { styles } from "../styles.js";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
+import { navLinks_spanish } from "../constants/spanish.js";
+import { useSpanish } from "../Context/SpanishContext.jsx";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const { spanish, setSpanish } = useSpanish();
 
   return (
     <nav
@@ -28,17 +30,37 @@ const Navbar = () => {
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((Link) => (
-            <li
-              key={Link.id}
-              className={`${
-                active === Link.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(Link.title)}
-            >
-              <a href={`#${Link.id}`}>{Link.title}</a>
-            </li>
-          ))}
+          {spanish === false
+            ? navLinks.map((Link) => (
+                <li
+                  key={Link.id}
+                  className={`${
+                    active === Link.title ? "text-white" : "text-secondary"
+                  } hover:text-white text-[18px] font-medium cursor-pointer`}
+                  onClick={() => setActive(Link.title)}
+                >
+                  <a href={`#${Link.id}`}>{Link.title}</a>
+                </li>
+              ))
+            : navLinks_spanish.map((Link) => (
+                <li
+                  key={Link.id}
+                  className={`${
+                    active === Link.title ? "text-white" : "text-secondary"
+                  } hover:text-white text-[18px] font-medium cursor-pointer`}
+                  onClick={() => setActive(Link.title)}
+                >
+                  <a href={`#${Link.id}`}>{Link.title}</a>
+                </li>
+              ))}
+          <li
+            onClick={() => {
+              setSpanish(!spanish);
+            }}
+            className={` text-secondary hover:text-white text-[18px] font-medium cursor-pointer`}
+          >
+            {!spanish ? "¡Clique para Espanol!" : " Click for English!"}
+          </li>
         </ul>
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img

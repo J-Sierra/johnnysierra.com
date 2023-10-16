@@ -4,13 +4,21 @@ import { technologies } from "../constants";
 import { textVariant } from "../utils/motion.js";
 import { styles } from "../styles.js";
 import { BallCanvas } from "./canvas/index.js";
+import { useSpanish } from "../Context/SpanishContext.jsx";
 
 const Tech = () => {
+  const { spanish } = useSpanish();
   return (
     <>
       <motion.div variants={textVariant()} className="pb-3">
-        <p className={styles.sectionSubText}>What I have Learned so far</p>
-        <h2 className={styles.sectionHeadText}>Technologies</h2>
+        <p className={styles.sectionSubText}>
+          {!spanish
+            ? "What I have Learned so far"
+            : "Lo que he aprendido hasta ahora"}
+        </p>
+        <h2 className={styles.sectionHeadText}>
+          {!spanish ? "Technologies" : "Tecnologías"}
+        </h2>
       </motion.div>
       <div className="flex flex-row flex-wrap justify-center gap-10">
         {technologies.map((technology, index) => (

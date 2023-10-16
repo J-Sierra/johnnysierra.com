@@ -30,7 +30,7 @@ $size: min(20vh, 20vw);
         color: #dd0031;
     }
     .face2 {
-        transform: rotateY(90deg) translateZ(calc($size / 2));
+        transform: rotateY(90deg) rotateZ(-90deg) translateZ(calc($size / 2));
         color: #f06529;
     }
     .face3 {

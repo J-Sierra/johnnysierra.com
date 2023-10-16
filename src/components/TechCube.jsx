@@ -7,12 +7,14 @@ import {
   faJsSquare,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
+import { SiTailwindcss } from "react-icons/si";
+
 const TechCube = () => {
   return (
     <div className="">
       <div className="cubespinner">
         <div className="face1">
-          <FontAwesomeIcon icon={faAngular} color="#DD0031" />
+          <SiTailwindcss color="#DD0031" />
         </div>
         <div className="face2">
           <FontAwesomeIcon icon={faHtml5} color="#F06529" />

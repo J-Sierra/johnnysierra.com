@@ -9,21 +9,24 @@ import {
   Tech,
   Works,
 } from "./components";
+import { SpanishProvider } from "./Context/SpanishContext.jsx";
 
 const App = () => (
   <BrowserRouter>
-    <div className="relative">
-      <Navbar />
-      <Hero />
-      <div className="bg-semiTransperant ">
-        <About />
-        <Works />
-        <Experience />
-        <Tech />
+    <SpanishProvider>
+      <div className="relative">
+        <Navbar />
+        <Hero />
+        <div className="bg-semiTransperant ">
+          <About />
+          <Works />
+          <Experience />
+          <Tech />
+        </div>
+        <Contact />
+        <StarsCanvas />
       </div>
-      <Contact />
-      <StarsCanvas />
-    </div>
+    </SpanishProvider>
   </BrowserRouter>
 );
 

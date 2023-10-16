@@ -1,12 +1,14 @@
 import ReactParallaxTilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../HOC";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { projects_spanish } from "../constants/spanish.js";
+import { useSpanish } from "../Context/SpanishContext.jsx";
+
 const ProjectCard = ({
   index,
   name,
@@ -34,7 +36,9 @@ const ProjectCard = ({
           />
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-1">
-            <div
+            <motion.div
+              whileHover={{ scale: 1.3 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => window.open(source_code_link, "_blank")}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
@@ -43,13 +47,15 @@ const ProjectCard = ({
                 alt="source code"
                 className="w-1/2 h-1/2 object-contain"
               />
-            </div>
-            <div
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.3 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => window.open(demo_link, "_blank")}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
               <FaExternalLinkAlt className="w-1/2 h-1/2 object-contain" />
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -74,11 +80,18 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const { spanish } = useSpanish();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Things I've made so far</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects</h2>
+        <p className={`${styles.sectionSubText} `}>
+          {spanish
+            ? "Cosas que he creado hasta ahora"
+            : "Things I've made so far"}
+        </p>
+        <h2 className={`${styles.sectionHeadText}`}>
+          {spanish ? "Proyectos" : "Projects"}
+        </h2>
       </motion.div>
 
       <div className="w-full flex">
@@ -86,19 +99,20 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Explore my work through the showcased projects, tangible examples
-          reflecting my skills and journey. Each project is introduced with
-          simplicity, offering links to code repositories and live demos. These
-          real-world instances speak to my ability to tackle challenges,
-          navigate diverse technologies, and effectively manage projects,
-          providing an authentic view of my experience.
+          {spanish
+            ? "Explora mi trabajo a través de los proyectos mostrados, ejemplos tangibles que reflejan mis habilidades y mi trayectoria. Cada proyecto se presenta con simplicidad, ofreciendo enlaces a repositorios de código y demos en vivo. Estas instancias del mundo real hablan de mi capacidad para abordar desafíos, navegar por diversas tecnologías y gestionar proyectos de manera efectiva, proporcionando una vista auténtica de mi experiencia."
+            : "Explore my work through the showcased projects, tangible examples reflecting my skills and journey. Each project is introduced with simplicity, offering links to code repositories and live demos. These real-world instances speak to my ability to tackle challenges, navigate diverse technologies, and effectively manage projects, providing an authentic view of my experience."}
         </motion.p>
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-        {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
-        ))}
+        {!spanish
+          ? projects.map((project, index) => (
+              <ProjectCard key={index} index={index} {...project} />
+            ))
+          : projects_spanish.map((project, index) => (
+              <ProjectCard key={index} index={index} {...project} />
+            ))}
       </div>
     </>
   );

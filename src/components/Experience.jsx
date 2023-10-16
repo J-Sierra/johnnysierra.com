@@ -9,6 +9,8 @@ import { styles } from "../styles.js";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../HOC";
 import { textVariant } from "../utils/motion.js";
+import { experiences_spanish } from "../constants/spanish.js";
+import { useSpanish } from "../Context/SpanishContext.jsx";
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -48,17 +50,26 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
+  const { spanish } = useSpanish();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What I have done so far</p>
-        <h2 className={styles.sectionHeadText}>Work Experience</h2>
+        <p className={styles.sectionSubText}>
+          {!spanish ? "What I have done so far" : "Lo que he hecho hasta ahora"}
+        </p>
+        <h2 className={styles.sectionHeadText}>
+          {!spanish ? "Work Experience" : "Experiencia Laboral"}
+        </h2>
       </motion.div>
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
+          {!spanish
+            ? experiences.map((experience, index) => (
+                <ExperienceCard key={index} experience={experience} />
+              ))
+            : experiences_spanish.map((experience, index) => (
+                <ExperienceCard key={index} experience={experience} />
+              ))}
         </VerticalTimeline>
       </div>
     </>
