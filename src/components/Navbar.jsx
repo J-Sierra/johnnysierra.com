@@ -89,6 +89,14 @@ const Navbar = () => {
                   <a href={`#${Link.id}`}>{Link.title}</a>
                 </li>
               ))}
+              <li
+                onClick={() => {
+                  setSpanish(!spanish);
+                }}
+                className={` text-secondary hover:text-white text-[18px] font-medium cursor-pointer`}
+              >
+                {!spanish ? "¡Clique para Espanol!" : " Click for English!"}
+              </li>
             </ul>
           </div>
         </div>
