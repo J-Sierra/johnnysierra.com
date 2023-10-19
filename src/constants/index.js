@@ -52,7 +52,7 @@ const services = [
   {
     title: "My Resume",
     icon: mobile,
-    link: "https://docs.google.com/document/d/1faYb76zN7Y0InOGewcLNEgn6U3Co0d7DLFxLrJy1DCU/edit?usp=sharing",
+    link: "https://docs.google.com/document/d/1nn1BR1svhIK1PH8k9OLsSVyYRH0gxl33rYLFtu8ccUo/edit?usp=sharing",
   },
 ];
 
