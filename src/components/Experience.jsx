@@ -8,7 +8,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { styles } from "../styles.js";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../HOC";
-import { textVariant } from "../utils/motion.js";
+import { textVariant } from "../../../FSI.com/src/utils/motion.js";
 import { experiences_spanish } from "../constants/spanish.js";
 import { useSpanish } from "../Context/SpanishContext.jsx";
 

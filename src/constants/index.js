@@ -15,10 +15,8 @@ import {
   threejs,
   uhv,
   firebase,
-  java,
-  expressJs,
   sudoku,
-  mediaFinder,
+  triumph_mockup,
   linkedin,
   github,
 } from "../assets";
@@ -140,7 +138,7 @@ const projects = [
     source_code_link: "https://github.com/J-Sierra/Sudoku2.0",
     demo_link: "https://sudoku.johnnysierra.com",
   },
-  {
+/*  {
     name: "Media Finder",
     description:
       "Using React and OmdbAPI, my movie search project delivers a swift and straightforward one-page search experience, providing detailed information about a movie instantly.",
@@ -161,6 +159,28 @@ const projects = [
     image: mediaFinder,
     source_code_link: "https://github.com/J-Sierra/movie-search",
     demo_link: "https://j-sierra.github.io/movie-search/",
+  },*/
+  {
+    name: "Triumph Ministries",
+    description:
+        "A mockup website for Triumph Ministries, built with Html, CSS, and JavaScript. This project showcases my ability to create visually appealing and functional web designs.",
+    tags: [
+      {
+        name: "HTML",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JavaScript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "CSS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: triumph_mockup,
+    source_code_link: "https://github.com/J-Sierra/Triumph-Mockup",
+    demo_link: "https://j-sierra.github.io/Triumph-Mockup/",
   },
 ];
 

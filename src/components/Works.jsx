@@ -4,7 +4,7 @@ import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../HOC";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn, textVariant } from "../../../FSI.com/src/utils/motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { projects_spanish } from "../constants/spanish.js";
 import { useSpanish } from "../Context/SpanishContext.jsx";

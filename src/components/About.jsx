@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles.js";
 import { services } from "../constants/index.js";
-import { fadeIn, textVariant } from "../utils/motion.js";
+import { fadeIn, textVariant } from "../../../FSI.com/src/utils/motion.js";
 import { SectionWrapper } from "../HOC";
 import { useSpanish } from "../Context/SpanishContext.jsx";
 import { services_spanish } from "../constants/spanish.js";

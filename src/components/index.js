@@ -1,6 +1,5 @@
 import {
-  EarthCanvas,
-  BallCanvas,
+
   ComputersCanvas,
   StarsCanvas,
 } from "./canvas/index.js";
@@ -22,8 +21,7 @@ export {
   Works,
   Feedbacks,
   Contact,
-  EarthCanvas,
-  BallCanvas,
+
   ComputersCanvas,
   StarsCanvas,
 };

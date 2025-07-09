@@ -29,6 +29,7 @@ import nuro from "./company/nuro.png";
 import sudoku from "./sudoku_screenshot.png";
 import mediaFinder from "./media_finder.png";
 import linkedin from "./linkedin.png";
+import triumph_mockup from "./triumph_mockup.png";
 
 export {
   logo,
@@ -59,4 +60,5 @@ export {
   sudoku,
   mediaFinder,
   linkedin,
+  triumph_mockup,
 };

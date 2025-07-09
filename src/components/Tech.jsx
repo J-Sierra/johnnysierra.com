@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../HOC/index.js";
 import { technologies } from "../constants";
-import { textVariant } from "../utils/motion.js";
+import { textVariant } from "../../../FSI.com/src/utils/motion.js";
 import { styles } from "../styles.js";
-import { BallCanvas } from "./canvas/index.js";
 import { useSpanish } from "../Context/SpanishContext.jsx";
 
 const Tech = () => {
@@ -24,7 +23,7 @@ const Tech = () => {
         {technologies.map((technology, index) => (
           <div className="w-32 h-32 flex flex-col" key={index}>
             <div className="w-28 h-28" key={technology.name}>
-              <BallCanvas icon={technology.icon} />
+                <img src={technology.icon} alt={technology.name} className="w-full h-full object-contain" />
             </div>
             <span className="text-center font-semibold text-sm">
               {technology.name}
