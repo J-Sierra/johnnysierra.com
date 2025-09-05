@@ -51,7 +51,9 @@ const About = () => {
         >
           {spanish
             ? "¡Bienvenido a mi espacio digital! Soy Johnny Sierra, un apasionado ingeniero de aplicaciónes digitales con talento para crear experiencias de internet inmersivas y receptivas. Mi trayectoria en el paisaje tecnológico en constante evolución me ha dotado de experiencia en React, React Native, JavaScript, HTML y CSS. Más allá de programar, mi entusiasmo se encuentra en la intersección de la tecnología y el diseño, asegurando que cada proyecto que emprendo no solo sea funcional sino también centrado en el usuario y visualmente atractivo. Únete a mí en este emocionante viaje digital, donde cada línea de código cuenta una historia y cada proyecto es un testimonio de mi compromiso de construir una mejor red."
-            : "Welcome to my digital space! I'm Johnny Sierra, a passionate software engineer with a knack for crafting immersive and responsive web experiences. My journey in the ever-evolving tech landscape has equipped me with expertise in React, React Native, JavaScript, HTML, and CSS. Beyond coding, my enthusiasm lies in the intersection of technology and design, ensuring every project I undertake is not just functional but also user-centric and visually engaging. Join me on this exciting digital journey, where each line of code tells a story and every project is a testament to my commitment to building a better web."}
+            : "I’m Johnny Sierra, a front-end web developer focused on building responsive, high-performance web applications. With experience in React, Next.js, Tailwind CSS, and modern JavaScript, I specialize in translating Figma designs into pixel-perfect, user-friendly interfaces.\n" +
+               "\n" +
+               "Beyond coding, I’m passionate about performance, accessibility, and clean UI architecture. Whether it’s a marketing site, a dashboard, or a custom component library, I aim to deliver web experiences that are both functional and visually engaging."}
         </motion.p>
       </div>
 

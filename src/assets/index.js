@@ -26,6 +26,7 @@ import expressJs from "./tech/express.png";
 import uhv from "./company/uhv.png";
 import RR from "./company/R&R.png";
 import nuro from "./company/nuro.png";
+import fullscope from "./company/fullscope.png";
 import sudoku from "./sudoku_screenshot.png";
 import mediaFinder from "./media_finder.png";
 import linkedin from "./linkedin.png";
@@ -54,6 +55,7 @@ export {
   uhv,
   RR,
   nuro,
+    fullscope,
   firebase,
   java,
   expressJs,
