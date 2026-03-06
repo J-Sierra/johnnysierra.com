@@ -38,11 +38,11 @@ export const navLinks = [
 ];
 
 const services = [
-/*  {
+  {
     title: "My LinkedIn Profile",
     icon: linkedin,
     link: "https://www.linkedin.com/in/johnny-sierra/",
-  },*/
+  },
   {
     title: "My GitHub Profile",
     icon: github,
